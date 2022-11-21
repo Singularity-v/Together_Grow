@@ -14,7 +14,7 @@ const HeaderBack = (props) => {
     <View style={styles.headerStyle}>
         <ImageBackground  style={styles.center} source={require('../image/header.png')} >
 
-        <TouchableOpacity style={styles.leftButton} onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity style={styles.leftButton} onPress={() => navigation.goBack()}>
           <Image style={styles.iconStyle} source={require('../image/pre.png')} />
         </TouchableOpacity>
 

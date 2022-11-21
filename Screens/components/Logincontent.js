@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigation } from '@react-navigation/native';
 import { Image, View, StyleSheet, TouchableOpacity, SafeAreaView, TextInput, Text,ScrollView, } from "react-native";
-const Logincontent = ({ navigation }) => {
+function Logincontent () {
+  const navigation = useNavigation();
   const [modalVisible, setModalVisible] = useState(false);
     return(
       <ScrollView style={{content: "center",marginTop:45,}}>
@@ -37,18 +39,18 @@ const Logincontent = ({ navigation }) => {
       </View>
       <View style={styles.sectionStyle2}>
       <TouchableOpacity onPress={() => navigation.push('Register')}>
-        
         <Image
             source={require('../image/signin.png')}
             style={styles.imageStyle2}
           />
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setModalVisible(true)}>
+      <TouchableOpacity onPress={() => navigation.push('Tabs')}>
           <Image
           source={require('../image/login.png')}
           style={styles.imageStyle2}
         />
         </TouchableOpacity>
+        
       </View>
       <View style={styles.sectionStyle3}>
       <Image

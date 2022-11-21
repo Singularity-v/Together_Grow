@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from "react";
-import { StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import { StyleSheet, StatusBar, SafeAreaView,View, Image, TouchableOpacity } from "react-native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Tabs from "./navigation/Tabs";
@@ -9,12 +9,19 @@ import InterPage from './Screens/pages/InterPage';
 import Loginpage from './Screens/pages/Loginpage';
 import Registerpage from './Screens/pages/Registerpage';
 
+import AboutMe from './Screens/pages/AboutMe';
+import NurtureHome from './Screens/pages/NurtureHome';
+import Observepage from './Screens/pages/Observepage';
+import CactusCommunicate from './Screens/pages/CactusCommunicate';
+import Messageboardpage from './Screens/pages/Messageboardpage';
+
 
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
+    
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Inter'>
       <Stack.Screen name ="Inter" component={InterPage}
@@ -32,10 +39,42 @@ const App = () => {
         headerShown: false,
        }}  
       />
+     
+      {/* <Stack.Screen name ="About" component={AboutMe}
+      options={{
+        headerShown: false,
+       }}  
+      />
+       <Stack.Screen name ="NurtureHome" component={NurtureHome}
+      options={{
+        headerShown: false,
+       }}  
+      />
+      <Stack.Screen name ="Observepage" component={Observepage}
+      options={{
+        headerShown: false,
+       }}  
+      />
+      <Stack.Screen name ="CactusCommunicate" component={CactusCommunicate}
+      options={{
+        headerShown: false,
+       }}  
+      />
+      <Stack.Screen name ="Messageboardpage" component={Messageboardpage}
+      options={{
+        headerShown: false,
+       }}  
+      /> */}
+      <Stack.Screen name ="Tabs" component={Tabs}
+      options={{
+        headerShown: false,
+       }}  
+      />
       </Stack.Navigator>
 
       
     </NavigationContainer>
+    
   );
 };
 

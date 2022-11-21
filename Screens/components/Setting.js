@@ -124,9 +124,9 @@ const Setting = ({ navigation }) => {
                     <TouchableOpacity 
                         onPress={()=>navigation.push('Loginpage')}
                         style={styles.signout}>
-                        <view>
+                        <View>
                             <Text style={styles.signout_text}>登出</Text>
-                        </view>
+                        </View>
                     </TouchableOpacity>
 
 

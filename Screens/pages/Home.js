@@ -4,11 +4,13 @@ import Header from "../components/Header";
 import ContentMain from "../components/ContentMain";
 
 
+
 function Home(){
     return(
       <View style={styles.container}>
         <Header title = "家" />
         <ContentMain />
+  
       </View>  
     );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useRef} from "react";
 import {
   View,
   StyleSheet,
@@ -13,15 +13,18 @@ import {
 } from 'react-native';
 
 import {Dimensions} from 'react-native';
-import Lottie from 'lottie-react-native';
+import LottieView from 'lottie-react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windoheight = Dimensions.get('window').height;
 import * as Progress from 'react-native-progress';
+import water from '../json/Water.json'
 
+//彈跳視窗
 const ModalPoup = ({visible, children}) => {
   const [showModal, setShowModal] = React.useState(visible);
   const scaleValue = React.useRef(new Animated.Value(0)).current;
+ 
   React.useEffect(() => {
     toggleModal();
   }, [visible]);
@@ -43,6 +46,7 @@ const ModalPoup = ({visible, children}) => {
     }
   };
   return (
+    
     <Modal transparent visible={showModal}>
       <View style={styles.modalBackGround}>
         <Animated.View
@@ -50,13 +54,23 @@ const ModalPoup = ({visible, children}) => {
           {children}
         </Animated.View>
       </View>
+      
     </Modal>
+   
   );
 };
 
 
 const ContentMain = () => {
   const [visible, setVisible] = React.useState(false);
+  const progress = useRef(new Animated.Value(0)).current;
+  const WaterAnimation = () =>{
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start();
+  };
 
   return (
     // <ScrollView>
@@ -127,7 +141,7 @@ const ContentMain = () => {
 {/* onPress={()=>{alert("you clicked me")}} */}
     <View style={styles.WaterStyle}>
         <TouchableOpacity style={styles.WaterButton} >
-                  <Image style={styles.WaterImage} source={require('../image/Water.png')} />
+            <Image style={styles.WaterImage} source={require('../image/Water.png')} />
         </TouchableOpacity>
     </View>
 
@@ -142,16 +156,6 @@ const ContentMain = () => {
                   <Image style={styles.PlayImage} source={require('../image/Play.png')} />
         </TouchableOpacity>
     </View>
-
-
-
-
-
-
-
-
-
-
 
 
     <View style={styles.cardSectionStyle}>
@@ -172,14 +176,18 @@ const ContentMain = () => {
     {/* source={require('../image/conversation1.png')} */}
 
     <View style={styles.cardplantStyle}>
+      <TouchableOpacity  onPress={WaterAnimation} style={styles.cardplantStyle}>
+            <LottieView progress={progress} source={water}/>
+        </TouchableOpacity>
     {/* <Image style={styles.plantImage} source={require('../image/plant.png')} /> */}
-    <Lottie 
+      {/* <LottieView source={water}/> */}
+    {/* <Lottie 
         style={styles.plantImage} 
         source={require('../json/common.json')} 
         autoPlay
         loop={true} 
         // duration={5000}
-      />
+      /> */}
     </View>
   </View>
   // </ScrollView>

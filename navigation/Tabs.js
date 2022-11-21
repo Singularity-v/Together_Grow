@@ -92,8 +92,9 @@ const CustomTabBarButtonC =({children, onPress}) => (
 
 const Tabs = () => {
   return (
+ 
       <Tab.Navigator
-        initialRouteName='Loginpage'
+        initialRouteName='Home'
         screenOptions={{
           showLabel: false,
           headerShown: false,
@@ -250,16 +251,7 @@ const Tabs = () => {
         ),
       }} />
 
-      <Tab.Screen name="Loginpage" component={Loginpage} options={{
-        headerShown: false,
-        //用不到
-        
-      }} />
-      <Tab.Screen name="Registerpage" component={Registerpage} options={{
-        headerShown: false,
-        //用不到
-        
-      }} />
+    
 
       </Tab.Navigator>
       
