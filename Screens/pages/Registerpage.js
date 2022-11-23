@@ -7,9 +7,8 @@ const Register = () => {
     return(
       
       <View style={styles.container}>
-      <HeaderBack title="註冊"/>
-      
-      <Registercontent />
+        <HeaderBack title="註冊"/>
+        <Registercontent />
       </View>
        
     );

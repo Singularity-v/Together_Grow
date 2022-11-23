@@ -8,6 +8,8 @@ import MainContainer from "./navigation/MainContainer";
 import InterPage from './Screens/pages/InterPage';
 import Loginpage from './Screens/pages/Loginpage';
 import Registerpage from './Screens/pages/Registerpage';
+import Registerpage2 from './Screens/pages/Registerpage02'
+import Registerpage3 from './Screens/pages/Registerpage03'
 
 import AboutMe from './Screens/pages/AboutMe';
 import NurtureHome from './Screens/pages/NurtureHome';
@@ -24,55 +26,62 @@ const App = () => {
     
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Inter'>
-      <Stack.Screen name ="Inter" component={InterPage}
-      options={{
-        headerShown: false,
-       }}  
-      />
-      <Stack.Screen name ="Login" component={Loginpage}
-      options={{
-        headerShown: false,
-       }}  
-      />
-      <Stack.Screen name ="Register" component={Registerpage}
-      options={{
-        headerShown: false,
-       }}  
-      />
-     
-      {/* <Stack.Screen name ="About" component={AboutMe}
-      options={{
-        headerShown: false,
-       }}  
-      />
-       <Stack.Screen name ="NurtureHome" component={NurtureHome}
-      options={{
-        headerShown: false,
-       }}  
-      />
-      <Stack.Screen name ="Observepage" component={Observepage}
-      options={{
-        headerShown: false,
-       }}  
-      />
-      <Stack.Screen name ="CactusCommunicate" component={CactusCommunicate}
-      options={{
-        headerShown: false,
-       }}  
-      />
-      <Stack.Screen name ="Messageboardpage" component={Messageboardpage}
-      options={{
-        headerShown: false,
-       }}  
-      /> */}
-      <Stack.Screen name ="Tabs" component={Tabs}
-      options={{
-        headerShown: false,
-       }}  
-      />
+        <Stack.Screen name ="Inter" component={InterPage}
+          options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Login" component={Loginpage}
+          options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Register" component={Registerpage}
+          options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Register02" component={Registerpage2}
+          options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Register03" component={Registerpage3}
+          options={{
+          headerShown: false,
+        }}  
+        />
+        {/* <Stack.Screen name ="About" component={AboutMe}
+        options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="NurtureHome" component={NurtureHome}
+        options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Observepage" component={Observepage}
+        options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="CactusCommunicate" component={CactusCommunicate}
+        options={{
+          headerShown: false,
+        }}  
+        />
+        <Stack.Screen name ="Messageboardpage" component={Messageboardpage}
+        options={{
+          headerShown: false,
+        }}  
+        /> */}
+        <Stack.Screen name ="Tabs" component={Tabs}
+          options={{
+          headerShown: false,
+        }}  
+        />
       </Stack.Navigator>
-
-      
     </NavigationContainer>
     
   );

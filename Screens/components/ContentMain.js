@@ -1,4 +1,4 @@
-import React,{useRef} from "react";
+import React,{useRef,useState} from "react";
 import {
   View,
   StyleSheet,
@@ -19,6 +19,9 @@ const windowWidth = Dimensions.get('window').width;
 const windoheight = Dimensions.get('window').height;
 import * as Progress from 'react-native-progress';
 import water from '../json/Water.json'
+import play from '../json/play.json'
+import heart from '../json/Heart.json'
+
 
 //彈跳視窗
 const ModalPoup = ({visible, children}) => {
@@ -56,22 +59,46 @@ const ModalPoup = ({visible, children}) => {
       </View>
       
     </Modal>
+    
    
   );
 };
 
 
 const ContentMain = () => {
+  const[Talk,setTalk]=useState(true);
+  const handleClick = event=> {
+    setTalk(current => !current);
+
+    };
+  
   const [visible, setVisible] = React.useState(false);
   const progress = useRef(new Animated.Value(0)).current;
   const WaterAnimation = () =>{
     Animated.timing(progress, {
       toValue: 1,
-      duration: 1000,
+      duration: 3000,
       useNativeDriver: true,
     }).start();
   };
-
+  const PlayAnimation = () =>{
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: true,
+      loop:true,
+    }).start();
+  };
+  const HeartAnimation = () =>{
+    Animated.timing(progress, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: true,
+      loop:true,
+    }).start();
+  };
+ 
+  
   return (
     // <ScrollView>
     <View style={styles.cardContainerStyle}>
@@ -140,20 +167,20 @@ const ContentMain = () => {
 
 {/* onPress={()=>{alert("you clicked me")}} */}
     <View style={styles.WaterStyle}>
-        <TouchableOpacity style={styles.WaterButton} >
+        <TouchableOpacity style={styles.WaterButton} onPress={WaterAnimation}>
             <Image style={styles.WaterImage} source={require('../image/Water.png')} />
         </TouchableOpacity>
     </View>
 
     <View style={styles.LoveStyle}>
-        <TouchableOpacity style={styles.LoveButton} >
-                  <Image style={styles.LoveImage} source={require('../image/Love.png')} />
+        <TouchableOpacity style={styles.LoveButton} onPress={HeartAnimation} >
+              <Image style={styles.LoveImage} source={require('../image/Love.png')} />
         </TouchableOpacity>
     </View>
 
     <View style={styles.PlayStyle}>
-        <TouchableOpacity style={styles.PlayButton} >
-                  <Image style={styles.PlayImage} source={require('../image/Play.png')} />
+        <TouchableOpacity style={styles.PlayButton} onPress={PlayAnimation} >
+              <Image style={styles.PlayImage} source={require('../image/Play.png')} />
         </TouchableOpacity>
     </View>
 
@@ -167,27 +194,64 @@ const ContentMain = () => {
     <ImageBackground  style={styles.stageImage} source={require('../image/stageone.png')} >
       </ImageBackground>
     </View>
-    
-    <View style={styles.cardConversation}>
-    <ImageBackground  style={styles.ConversationImage} >
-      </ImageBackground>
-    </View>
 
-    {/* source={require('../image/conversation1.png')} */}
+    {/* 對話 */}
+
+      {/* <View style={styles.cardConversation}  >
+      
+        <Image  style={styles.ConversationImage} source={require('../image/conversation1.png')} >
+
+        </Image>
+
+      </View> */}
+    
+
+
 
     <View style={styles.cardplantStyle}>
-      <TouchableOpacity  onPress={WaterAnimation} style={styles.cardplantStyle}>
+      
+      {/* <TouchableOpacity   >
             <LottieView progress={progress} source={water}/>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
     {/* <Image style={styles.plantImage} source={require('../image/plant.png')} /> */}
-      {/* <LottieView source={water}/> */}
-    {/* <Lottie 
+     {/* <LottieView 
+        options={WaterAnimation}
         style={styles.plantImage} 
-        source={require('../json/common.json')} 
-        autoPlay
-        loop={true} 
-        // duration={5000}
-      /> */}
+        progress={progress} 
+        source={water}
+       /> */}
+    {/* <LottieView 
+        options={HeartAnimation}
+        style={styles.plantImage} 
+        progress={progress} 
+        source={heart}
+       /> */}
+    {/* <LottieView 
+        options={PlayAnimation}
+        style={styles.plantImage} 
+        progress={progress} 
+        source={play}
+       /> */}
+       
+        <View style={styles.Talk}>
+          <View style={{visibility: Talk ? 'visible2' : 'hidden'}}>
+            <P>11111</P>
+          </View>
+          <TouchableOpacity  onClick={handleClick}>
+            <Image style={styles.TalkImage} source={require('../image/Water.png')} />
+          </TouchableOpacity>
+          
+        </View>
+   
+      {/* <LottieView
+          style={styles.plantImage} 
+          source={require('../json/common.json')} 
+          autoPlay
+          loop={true} 
+          // duration={5000}
+        /> */}
+       
+      
     </View>
   </View>
   // </ScrollView>
@@ -210,7 +274,12 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
     paddingTop:36,
   },
-
+  visible2 :{
+    visibility: visible
+  },
+  hidden: {
+    visibility: hidden
+  },
   iconContentStyle: {
     flexDirection: "column",
     justifyContent: "space-around",
@@ -306,7 +375,20 @@ const styles = StyleSheet.create({
     width: 248,
     height:71,
   },
+  Talk: {
+    width: 212,
+    height: 239,
+    justifyContent: 'center',
+    alignItems: 'center', 
+    marginTop: 259,
+    position: 'absolute',
+    marginLeft: 99,
+    color:'#000000'
+  },
+  TalkImage:{
+    opacity:0,
 
+  },
   cardplantStyle: {
     width: 212,
     height: 239,
@@ -316,7 +398,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginLeft: 99,
   },
-
+ 
   plantImage: {
     marginTop:-15,
     padding:0,
@@ -363,6 +445,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
   },
+  
 //  PlayStyle: {
 //     width:32,
 //     height:32,

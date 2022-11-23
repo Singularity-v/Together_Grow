@@ -177,10 +177,6 @@ const Tabs = () => {
           
         }}/>
 
-
-
-
-
         <Tab.Screen name="AboutMe" component={AboutMe} options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
@@ -199,7 +195,7 @@ const Tabs = () => {
           
         }}/>
 
-<Tab.Screen name="Messageboardpage" component={Messageboardpage} options={{
+      <Tab.Screen name="Messageboardpage" component={Messageboardpage} options={{
         headerShown: false,
 
         tabBarIcon: ({ focused }) => (
