@@ -1,12 +1,27 @@
 import React, { useState } from "react";
 import { useNavigation } from '@react-navigation/native';
-import { Image, View, StyleSheet, TouchableOpacity, TextInput, Text, ScrollView } from "react-native";
-import { RadioButton } from 'react-native-paper';
+import { Image, View, StyleSheet, TouchableOpacity, Text, ScrollView } from "react-native";
+import RadioButton from './RadioButton';
 
 const Registercontent03 = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [value, setValue] = React.useState('first');
   const navigation = useNavigation();
+
+  const [option, setOption] = useState(null);
+  const data = [
+    { value: '刺刺',
+      imgURL: require('../image/seed_01.png'),
+      intro: '刺刺為海膽仙人掌的種子，需要培育過‘’金鑽等級‘’的培育家才能使用。',
+    },
+    { value: '燈泡',
+      imgURL: require('../image/seed_02.png'),
+      intro: '燈泡為未知品種仙人掌的種子，快培養它來一探究竟它的真面貌吧！',
+    },
+    { value: '被子',
+      imgURL: require('../image/seed_03.png'),
+      intro: '被子為鯊人掌的種子，任何等級都能輕鬆培育及駕馭的種子！',
+    },
+  ];
+
   return (
     <ScrollView style={{ content: "center",  }}>
       <View style={styles.container}>
@@ -16,95 +31,19 @@ const Registercontent03 = () => {
                 style={{ width: "100%", height:70, marginTop: 10}}
                 resizeMode="center"
             />
-          <Text style={styles.textstyle}>帳號</Text>
-          <View style={styles.sectionStyle}>
+          
 
-            <Image
-              source={require('../image/user.png')}
-              style={styles.imageStyle}
-            />
-            <TextInput
-              style={{ flex: 1 }}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-          <Text style={styles.textstyle}>暱稱</Text>
-          <View style={styles.sectionStyle}>
+          <Text style={styles.paragraph}>選擇您喜歡的種子來進行培養! </Text>
+          <RadioButton data={data} onSelect={(value) => setOption(value)} />
+          <Text style={styles.textstyle}> 您選擇的是: {option}</Text> 
 
-            <Image
-              source={require('../image/nickname.png')}
-              style={styles.imageStyle}
-            />
-            <TextInput
-              style={{ flex: 1 }}
-
-              underlineColorAndroid="transparent"
-            />
-          </View>
-          <Text style={styles.textstyle}>性別</Text>
-          <RadioButton.Group 
-            onValueChange={newValue => setValue(newValue)} 
-            value={value} 
-          >
-            <View style={{ flex: 1, flexDirection: 'row', marginTop:8}}>
-              <View style={styles.radioBox}>
-                <RadioButton value="男性" uncheckedColor="#CDE49C" color="#F6CA2C"/>
-                <Text style={styles.radioText}>男性</Text>
+          <View style={styles.sectionStyle2}>
+            <TouchableOpacity onPress={() => navigation.push('Tabs')}>
+              <View style={styles.nextBtn}>
+                <Text style={styles.nextBtnText}> 確認選擇 </Text>
               </View>
-              <View style={styles.radioBox}>
-                <RadioButton value="女性" uncheckedColor="#CDE49C" color="#F6CA2C"/>
-                <Text style={styles.radioText}>女性</Text>
-              </View>
-            </View>
-          </RadioButton.Group>
-          <Text style={styles.textstyle}>生日</Text>
-          <View style={styles.sectionStyle}>
-
-            <Image
-              source={require('../image/passwordicon.png')}
-              style={styles.imageStyle}
-            />
-            <TextInput
-              style={{ flex: 1 }}
-              underlineColorAndroid="transparent"
-            />
+            </TouchableOpacity>
           </View>
-          <Text style={styles.textstyle}>興趣</Text>
-          <View style={styles.sectionStyle}>
-
-            <Image
-              source={require('../image/passwordicon.png')}
-              style={styles.imageStyle}
-            />
-            <TextInput
-              style={{ flex: 1 }}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-          <Text style={styles.textstyle}>健康狀態（Ex：糖尿病）</Text>
-          <View style={styles.sectionStyle}>
-
-            <Image
-              source={require('../image/passwordicon.png')}
-              style={styles.imageStyle}
-            />
-            <TextInput
-              style={{ flex: 1 }}
-              underlineColorAndroid="transparent"
-            />
-          </View>
-
-
-
-        <View style={styles.sectionStyle2}>
-
-          <TouchableOpacity onPress={() => navigation.push('Tabs')}>
-            <View style={styles.nextBtn}>
-              <Text style={styles.nextBtnText}> 確認選擇 </Text>
-            </View>
-          </TouchableOpacity>
-
-        </View>
         </View>
         <Image
           source={require('../image/Signin-Bottom-Bear.png')}
@@ -115,25 +54,18 @@ const Registercontent03 = () => {
 }
 
 const styles = StyleSheet.create({
+  paragraph: {
+    marginTop: 20,
+    color: "#62935F",
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginBottom:10,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  sectionStyle4: { //第三方登入
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  sectionStyle3: {//or
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom:10,
-    marginTop:20,
   },
   sectionStyle2: { 
     flex: 1,
@@ -161,39 +93,7 @@ const styles = StyleSheet.create({
     resizeMode: 'stretch',
     alignItems: 'center',
   },
-  imageStyle2: {
-    padding: 10,
-    margin: 5,
-    height: 48,
-    width: 132,
-    resizeMode: 'stretch',
-    alignItems: 'center',
-  },
-  yellowlineleft: {
-    // marginLeft:30,
-  },
-  yellowlineRight: {
-    // marginRight:30,
-  },
   textstyle: {
-    fontSize: 16,
-    color: "#62935F",
-    fontWeight: "bold",
-    marginTop:15,
-  },
-  textstyle3: {
-    // marginLeft: 190,
-    marginTop: 10,
-    fontSize: 14,
-    color: "#705A31",
-  },
-  textstyle4: {
-    fontSize: 16,
-    color: "#705A31",
-  },
-  textstyle5: {
-    // marginRight: 210,
-    marginTop: 10,
     fontSize: 16,
     color: "#62935F",
     fontWeight: "bold",
@@ -211,16 +111,5 @@ const styles = StyleSheet.create({
     borderRadius:20,
     marginTop:20,
   },
-  radioBox: {
-    flex: 1, 
-    flexDirection: 'row', 
-    backgroundColor:"Black" ,  
-    alignItems: 'center'
-  },
-  radioText: {
-    fontSize: 16,
-    color: "#62935F",
-    fontWeight: "bold",
-  }
 });
 export default Registercontent03;

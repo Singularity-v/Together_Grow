@@ -48,10 +48,6 @@ const Registercontent02 = () => {
           <Text style={styles.textstyle}>生日</Text>
           <View style={styles.sectionStyle}>
             <Text style={styles.innerTextStyle}>  </Text>
-            {/* <Image
-              source={require('../image/passwordicon.png')}
-              style={styles.imageStyle}
-            /> */}
             <TextInput
               style={{ flex: 1 }}
               underlineColorAndroid="transparent"
