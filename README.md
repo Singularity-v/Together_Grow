@@ -19,6 +19,11 @@ NewsEvents    活動頁
 
 Setting    個人資料
 
+Registercontent、Registercontent02、Registercontent03　　　註冊三步驟
+（搭配 Page 的 RegisterPage、RegisterPage02、RegisterPage0ˇ）
+
+RadioButton　　　註冊第三步驟_種子選擇
+
 
 ## 其他
 navigation/Tabs.js     下方導覽列
